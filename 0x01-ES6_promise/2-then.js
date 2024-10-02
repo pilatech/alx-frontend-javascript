@@ -9,6 +9,6 @@ export default function handleResponseFromAPI(promise) {
     retVal = new Error();
   }).finally(() => {
     console.log('Got a response from the API');
+    return retVal;
   });
-  return retVal;
 }
