@@ -45,7 +45,22 @@ function createEmployee(salary: number | string) {
     return new Director();
 }
 
-console.log(createEmployee(200));
+function isDirector(employee: Teacher | Director): employee is Director {
+    return (
+        employee instanceof Director
+    );
+}
 
-console.log(createEmployee(1000));
-console.log(createEmployee('$500'));
+function executeWork(employee: Teacher | Director) {
+    if (isDirector(employee)) {
+        return employee.workDirectorTasks()
+    } else {
+        return employee.workTeacherTasks()
+    }
+}
+
+type Subjects = "Math" | "History";
+
+function teachClass(todayClass: Subjects) {
+   return `Teaching ${todayClass}`;
+}
